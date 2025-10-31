@@ -1,0 +1,18 @@
+#propagationpolicy-nginx.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: propagationpolicy-nginx
+spec:
+  destination:
+    server: https://kubernetes.default.svc   
+    namespace: default
+  source:
+    repoURL: https://github.com/jittuki/karmada-propagation.git
+    targetRevision: main
+    path: propagation-all-cluster
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
