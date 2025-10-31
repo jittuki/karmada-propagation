@@ -1,17 +1,18 @@
-#propagationpolicy-nginx.yaml
+# propagationpolicy-nginx.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: propagationpolicy-nginx
+  namespace: argocd
 spec:
-  destination:
-    server: https://kubernetes.default.svc   
-    namespace: default
-  source:
-    repoURL: https://github.com/jittuki/karmada-propagation.git
-    targetRevision: main
-    path: propagation-all-cluster
   project: default
+  source:
+    repoURL: git@github.com:jittuki/karmada-propagation.git
+    targetRevision: main
+    path: propagation-policies
+  destination:
+    server: https://kubernetes.default.svc   # Karmada Control Plane
+    namespace: default
   syncPolicy:
     automated:
       prune: true
