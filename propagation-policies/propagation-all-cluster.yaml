@@ -11,4 +11,4 @@ spec:
       name: nginx
   placement:
     clusterAffinity: 
-      clusterNames:{}
+      clusterNames:[]
