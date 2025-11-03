@@ -11,5 +11,6 @@ spec:
       name: nginx
   placement:
     clusterAffinity:
-      - jisu-member-1
-      - jisu-member-2
+      clusterNames:
+        - jisu-member-1
+        - jisu-member-2
